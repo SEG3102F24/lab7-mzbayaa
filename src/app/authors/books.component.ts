@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, Routes, RouterOutlet } from '@angular/router';
-import { AuthorComponent } from './author/author.component';
+import { AuthorComponent } from './book/book.component';
 
-export const authorsRoutes: Routes = [
+export const booksRoutes: Routes = [
   { path: ':id', component: AuthorComponent },
 ];
 
 @Component({
-  selector: 'app-authors',
-  templateUrl: './authors.component.html',
-  styleUrls: ['./authors.component.css'],
+  selector: 'app-books',
+  templateUrl: './books.component.html',
+  styleUrls: ['./books.component.css'],
   standalone: true,
   imports: [RouterOutlet],
 })

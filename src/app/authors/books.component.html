@@ -1,9 +1,9 @@
 <div>
-  <h2>Search the Author</h2>
+  <h2>Search For An Author</h2>
   <div>
     <label for="id">Author Id:</label>
-    <input type="text" #authorQuery id="id" />
-    <button (click)="submit(authorQuery.value)">Search</button>
+    <input type="text" #bookQuery id="id" />
+    <button (click)="submit(bookQuery.value)">Search</button>
   </div>
   <div class="container">
     <router-outlet></router-outlet>

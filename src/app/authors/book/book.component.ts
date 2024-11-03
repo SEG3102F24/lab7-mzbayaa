@@ -1,33 +1,33 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Author } from '../model/author';
-import { AuthorsService } from '../service/authors.service';
+import { Book } from '../model/book';
+import { BooksService } from '../service/books.service';
 import { Subscription } from 'rxjs';
 import { AuthornamesPipe } from '../../pipes/authornames.pipe';
 import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-author',
-  templateUrl: './author.component.html',
-  styleUrls: ['./author.component.css'],
+  selector: 'app-book',
+  templateUrl: './book.component.html',
+  styleUrls: ['./book.component.css'],
   standalone: true,
   imports: [NgIf, AuthornamesPipe],
 })
 export class AuthorComponent implements OnInit, OnDestroy {
-  selectedAuthor!: Author | null;
+  selectedBook!: Book | null;
   private subscription!: Subscription;
   private route: ActivatedRoute = inject(ActivatedRoute);
-  private authorsService: AuthorsService = inject(AuthorsService);
+  private booksService: BooksService = inject(BooksService);
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       const id = params['id'];
-      this.subscription = this.authorsService.getAuthor(id).subscribe({
-        next: (data: Author) => {
-          this.selectedAuthor = data;
+      this.subscription = this.booksService.getBook(id).subscribe({
+        next: (data: Book) => {
+          this.selectedBook = data;
         },
         error: (_: any) => {
-          this.selectedAuthor = null;
+          this.selectedBook = null;
         },
       });
     });
